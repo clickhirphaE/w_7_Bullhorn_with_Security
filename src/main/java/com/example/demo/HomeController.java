@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 public class HomeController {
@@ -57,12 +58,28 @@ public class HomeController {
            model.addAttribute("message","Account created!");
            return "Homepage"; //Homepage
        }
-    @RequestMapping("/messagelist")
+    @PostMapping("/messagelist")
     public String listMessages(Model model ){
         model.addAttribute("messages",messageRepository.findAll());
 
         return "messagelist";
     }
+    @RequestMapping("/messagelist")
+    public String secure(Principal principal, Model model){
+        String username=principal.getName();
+        model.addAttribute("user",userRepository.findByUsername(username));
+        return "messagelist";
+    }
+    ///////////////
+   /* @PostMapping("/messagelist")
+    public String postmessage(@Valid Message message, BindingResult result){
+      if(result.hasErrors()){
+          return "login";
+      }
+
+      return "redirect:/messagelist";
+    }*/
+    /////////
     @GetMapping("/add")
     public String messageForm(Model model){
         model.addAttribute("message", new Message());

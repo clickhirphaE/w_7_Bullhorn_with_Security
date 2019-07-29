@@ -21,6 +21,7 @@
 
         h2{
             font-family: 'Great Vibes', cursive;
+
         }
         body{
             background-color: aliceblue;
@@ -29,6 +30,10 @@
         html{
             background-attachment: fixed;
             border-radius: 1px;
+        }
+        h1{
+            mso-text-animation: ants-black;
+            visibility: hidden;
         }
     </style>
 </head>
@@ -59,8 +64,23 @@
         <h2 style="text-decoration: #cccccc;  text-shadow: #f2f2f2; text-align: center; text-decoration-style: solid"><strong>Welcome to the Message body!</strong></h2>
 
         <div class="jumbotron">
-            <h1>Hello World!</h1>
-            <p>inside</p>
+            <h1 style="text-align: center; backface-visibility: inherit">Hello World!</h1>
+            <p>
+            <table align="center" style="width: 80%; margin-right: 12px ;margin-left: 12px;">
+
+                <tr><td colspan="6">
+                <tr>
+                    <th>Title </th>
+                    <th>content</th>
+                    <th>postedby</th>
+
+                </tr>
+
+                <tr th:each="message :${messages}">
+                    <td th:text="${message.title}"></td>
+                    <td th:text="${message.content}"></td>
+                    <td th:text="${message.postedby}"></td></tr></table>
+            </p>
         </div>
     </div>
 
