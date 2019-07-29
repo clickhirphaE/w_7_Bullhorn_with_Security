@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>login page</title>
+    <!--header-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+    #login{
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+</style>
+</head>
+<body>
+<!--a href="/register"></button> </a-->
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/">Home</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Log in</a>
+        </li>
+        <li class="nav-item">
+
+            <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+        </li>
+    </ul>
+</nav>
+
+<div id="login">
+
+<h1>Login page</h1>
+<div th:if="${param.error}">Invalid password</div>
+<div th:if="${param.logout}">you've been logged out</div>
+<form th:action="@{/messagelist}" method="post">
+    <div><label>User name:<input type="text" name="username"/> </label></div>
+    <span>
+    </span>
+    <div><label>password:<input type="password" name="password"/> </label></div>
+    <div><input type="submit" value="sign in"/> </div>
+</form>
+</div>
+</body>
+</html>

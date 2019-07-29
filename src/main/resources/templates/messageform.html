@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"
+
+      xmlns:th="www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset=" UTF-8">
+<title>Title</title>
+<style>
+    input[type=text] {
+        width: 100%;
+        padding: 20px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        box-sizing: border-box;
+    }
+    input[type=submit] {
+        width: 60%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+
+        height: 100%;
+    }
+
+</style>
+</head>
+<body>
+<div>
+    <form action="#" th:action="@{/process}" th:object="${message}" method="post">
+        <table align="center">
+            <tr>
+                <td colspan="2"><h2 align="center">what is in your mind?</h2></td></tr>
+            <input type="hidden" th:field="*{id}"/>
+            <tr><td> Title:</td><td> <input type="text" th:field="*{title}"/>
+                <td><span th:if="${#fields.hasErrors('title')}"
+                          th:errors="*{title}"/></span><br/></td></td></tr>
+
+
+            <tr><td>Content:</td><td> <textarea rows="3" th:field="*{content}"/>
+                <td> <span th:if="${#fields.hasErrors('content')}"
+                           th:errors="*{content}"/></span><br/></td></td></tr>
+
+            <tr><td>postedby: </td><td><input type="text" th:field="*{postedby}"/>
+                <td><span th:if="${#fields.hasErrors('postedby')}"
+                          th:errors="*{postedby}"/></span><br/></td></td></tr>
+
+            <tr><td colspan="2"><input type="submit" value="Submit"/></td></tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

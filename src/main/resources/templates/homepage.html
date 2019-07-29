@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+
+      xmlns:th="www.thymeleaf.org"
+      xmlns:sec="www.thymeleaf.org/extras/spring-security">
+<head>
+  <meta charset=" UTF-8">
+<title>homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <!--google font-->
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes&display=swap" rel="stylesheet">
+    <!--link href="https://fonts.googleapis.com/css?family=Lobster&display=swap" rel="stylesheet"-->
+    <style>
+
+        h2{
+            font-family: 'Great Vibes', cursive;
+        }
+        body{
+            background-color: aliceblue;
+            border-radius: 1px;
+        }
+        html{
+            background-attachment: fixed;
+            border-radius: 1px;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- Brand/logo -->
+    <a class="navbar-brand" href="/">Home</a>
+
+    <!-- Links -->
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Log in</a>
+        </li>
+        <li class="nav-item">
+
+            <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">--</a>
+            <!--welcoming area for the newly created account-->
+        </li>
+    </ul>
+</nav>
+<p th:text="${message}" style="text-align: center"></p>
+<div>
+<div><div></div></div>
+    <div class="container">
+        <h2 style="text-decoration: #cccccc;  text-shadow: #f2f2f2; text-align: center; text-decoration-style: solid"><strong>Welcome to the Message body!</strong></h2>
+
+        <div class="jumbotron">
+            <h1>Hello World!</h1>
+            <p>inside</p>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
