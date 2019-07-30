@@ -14,12 +14,13 @@ Title:<span th:text="${message.title}"></span><br/>
 content:<span th:text="${message.content}"></span><br/>
 postedby:<span th:text="${message.postedby}"></span><br/>
  <span th:if="${user_id==message.user.id}">
-   <a th:href="@{/delete/{id}(id=${course.id})}">delete this Message</a></span></div>
+   <a th:href="@{/delete/{id}(id=${message.id})}">delete this Message</a></span></div>
+
 <div sec:authorize="hasAuthority('ADMIN')">
   Title:<span th:text="${message.title}"></span><br/>
   content:<span th:text="${message.content}"></span><br/>
   postedby:<span th:text="${message.postedby}"></span><br/>
-  <a th:href="@{/delete/{id}(id=${course.id})}">delete this Message</a>
+  <a th:href="@{/delete/{id}(id=${message.id})}">delete this Message</a>
 </div>
 </body>
 </html>
