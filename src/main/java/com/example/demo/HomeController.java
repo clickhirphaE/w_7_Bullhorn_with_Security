@@ -24,10 +24,11 @@ public class HomeController {
    @Autowired
    UserService userService;
 
-       @RequestMapping("/")
-       public String Homepage(Model model){
-           return "homepage";
-       }
+//       @RequestMapping("/")
+//       public String Homepage(Model model){
+//           return "homepage";
+//       }
+
        @RequestMapping("/login")
        public String loginpage(){
            return "login";
@@ -59,14 +60,14 @@ public class HomeController {
 
            return "redirect:/"; //Homepage
        }
-//    @RequestMapping("/")
-//    public String listMessages(Model model ){
-//        model.addAttribute("messages",messageRepository.findAll());
-//         if(userService.getUser()!=null){
-//             model.addAttribute("user_id",userService.getUser().getId());
-//         }
-//        return "messagelist";
-//    }
+    @RequestMapping("/")
+    public String listMessages(Model model ){
+        model.addAttribute("messages",messageRepository.findAll());
+         if(userService.getUser()!=null){
+             model.addAttribute("user_id",userService.getUser().getId());
+         }
+        return "homepage";
+  }
 //    @RequestMapping("/messagelist")
 //    public String secure(Principal principal, Model model){
 //        String username=principal.getName();
@@ -101,6 +102,9 @@ public class HomeController {
     @RequestMapping("/detail/{id}")
     public String showMessage(@PathVariable("id") long id,Model model){
         model.addAttribute("message",messageRepository.findById(id).get());
+        if(userService.getUser()!=null) {
+            model.addAttribute("user_id", userService.getUser().getId());
+        }
         return "show";
     }
     @RequestMapping("/update/{id}")

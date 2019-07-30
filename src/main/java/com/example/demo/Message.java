@@ -23,9 +23,14 @@ public class Message {
     @NotNull
     @Size(min=10)
     private String postedby;
-    @ManyToOne(fetch=FetchType.EAGER) //many to one
+
+
+
+
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.REMOVE) //many to one
     @JoinColumn(name="user_id")
     private User user;
+
     public Message() {
     }
 
@@ -36,6 +41,12 @@ public class Message {
         this.postedby = postedby;
     }
 
+    public User getUser() {
+        return user;
+    }
+    public void setUser(User user) {
+        this.user = user;
+    }
     public long getId() {
         return id;
     }
