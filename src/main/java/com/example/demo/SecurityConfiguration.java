@@ -38,14 +38,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
 
                 //Adding role
-                .antMatchers("/", "/h2-console/**", "/register").permitAll()
+                .antMatchers("/", "/h2-console/**", "/register","/css/**").permitAll()
 
-                //.access("hasAnyAuthority('USER','ADMIN')")
+                .antMatchers("/add","/process","/show").access("hasAnyAuthority('USER','ADMIN')")
                 .antMatchers("/admin").access("hasAuthority('ADMIN')")
                 //
                 .anyRequest().authenticated()
                 .and()  //Adds additional authentication rules
-                .formLogin().loginPage("/login").permitAll()
+                .formLogin().loginPage("/login").permitAll().successForwardUrl("/")
                 .and().logout()
                 .logoutRequestMatcher(
                         new AntPathRequestMatcher("/logout"))
@@ -56,7 +56,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable();
         http
-                .headers().frameOptions().disable();
+                .headers().frameOptions().disable(); //for H2 cons
 
 
     }

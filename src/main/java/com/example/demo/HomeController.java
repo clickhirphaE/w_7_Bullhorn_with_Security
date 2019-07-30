@@ -20,9 +20,9 @@ public class HomeController {
     @Autowired
     MessageRepository messageRepository;
    @Autowired
-   private UserRepository userRepository;
+   UserRepository userRepository;
    @Autowired
-   private UserService userService;
+   UserService userService;
 
        @RequestMapping("/")
        public String Homepage(Model model){
@@ -54,22 +54,25 @@ public class HomeController {
                return "register";
            }else{
                userService.saveUser(user);
+               model.addAttribute("message","Account created!");  //#
            }
-           model.addAttribute("message","Account created!");
-           return "Homepage"; //Homepage
-       }
-    @PostMapping("/messagelist")
-    public String listMessages(Model model ){
-        model.addAttribute("messages",messageRepository.findAll());
 
-        return "messagelist";
-    }
-    @RequestMapping("/messagelist")
-    public String secure(Principal principal, Model model){
-        String username=principal.getName();
-        model.addAttribute("user",userRepository.findByUsername(username));
-        return "messagelist";
-    }
+           return "redirect:/"; //Homepage
+       }
+//    @RequestMapping("/")
+//    public String listMessages(Model model ){
+//        model.addAttribute("messages",messageRepository.findAll());
+//         if(userService.getUser()!=null){
+//             model.addAttribute("user_id",userService.getUser().getId());
+//         }
+//        return "messagelist";
+//    }
+//    @RequestMapping("/messagelist")
+//    public String secure(Principal principal, Model model){
+//        String username=principal.getName();
+//        model.addAttribute("user",userRepository.findByUsername(username));
+//        return "messagelist";
+//    }
     ///////////////
    /* @PostMapping("/messagelist")
     public String postmessage(@Valid Message message, BindingResult result){
@@ -91,6 +94,7 @@ public class HomeController {
         if(result.hasErrors()){
             return "messageform";
         }
+       // message.setUser(userService.getUser()); //
         messageRepository.save(message);
         return "redirect:/";
     }

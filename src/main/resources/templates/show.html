@@ -8,12 +8,18 @@
 <title>Title</title>
 </head>
 <body>
-<a href="/"> Show All Messages</a><br/>
+<h2> Show All Messages</h2><br/>
+<div sec:authorize="hasAuthority('USER')">
 Title:<span th:text="${message.title}"></span><br/>
 content:<span th:text="${message.content}"></span><br/>
 postedby:<span th:text="${message.postedby}"></span><br/>
-
-
-<a th:href="@{/delete/{id}(id=${course.id})}">delete this Message</a>
+ <span th:if="${user_id==message.user.id}">
+   <a th:href="@{/delete/{id}(id=${course.id})}">delete this Message</a></span></div>
+<div sec:authorize="hasAuthority('ADMIN')">
+  Title:<span th:text="${message.title}"></span><br/>
+  content:<span th:text="${message.content}"></span><br/>
+  postedby:<span th:text="${message.postedby}"></span><br/>
+  <a th:href="@{/delete/{id}(id=${course.id})}">delete this Message</a>
+</div>
 </body>
 </html>

@@ -32,6 +32,7 @@
 <table align="center">
 
     <tr><td colspan="6"><a href="/add"><button style="background-color: blue; border-radius: 4px";><h3>Add message</h3></button></a></td></tr>
+    <div sec:authorize="hasAuthority('USER')">
     <tr>
         <th>Title</th>
         <th>content</th>
@@ -49,6 +50,6 @@
         <td><a th:href="@{/delete/{id}(id=${message.id})}">Delete</a></td>
 
     </tr>
-</table>
+    </div></table>
 </body>
 </html>
